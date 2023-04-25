@@ -1,0 +1,26 @@
+.container {
+  width: 1200px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.buttonGoHome {
+  width: 180px;
+  margin-bottom: 60px;
+  padding: 14px 0;
+  background-color: #ebd8ff;
+  box-shadow: 0px 3.6px 3.6px rgba(0, 0, 0, 0.25);
+  border-radius: 10.3px;
+  border: none;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: #373737;
+  transition: background-color 250ms linear, color 250ms linear;
+}
+
+.buttonGoHome:hover {
+  background-color: #4b2a99;
+  color: snow;
+}
