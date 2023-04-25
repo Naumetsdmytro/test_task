@@ -1,0 +1,2 @@
+"use strict";(self.webpackChunktest_task=self.webpackChunktest_task||[]).push([[370],{370:function(t,e,s){s.r(e),s.d(e,{default:function(){return r}});var a="Home_title__34wa5",n=s(184);function r(){return(0,n.jsx)("h1",{className:a,children:"Welcome to card tweets program!"})}}}]);
+//# sourceMappingURL=370.9f140e8a.chunk.js.map
