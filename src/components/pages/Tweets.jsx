@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react';
 
-import { fetchUsersData } from 'components/services/fetchUsersData';
+import {
+  fetchUsersData,
+  updateFollowers,
+} from 'components/services/fetchUsersData';
+import { saveToStorage } from 'components/services/storage';
 import { TweetsList } from 'components/TweetsList';
 import { ButtonLoadMore } from 'components/ButtonLoadMore/ButtonLoadMore';
 import { Loader } from 'components/Loader';
@@ -36,6 +40,22 @@ export default function Tweets() {
     setPage(prevstate => prevstate + 1);
   };
 
+  const handleFollowClick = (userId, isFollowing) => {
+    const updatedUsers = users.map(user => {
+      if (user.id === userId) {
+        const updatedUser = {
+          ...user,
+          followers: user.followers + (isFollowing ? -1 : 1),
+        };
+        updateFollowers(user.id, { followers: updatedUser.followers });
+        return updatedUser;
+      }
+      return user;
+    });
+    setUsers(updatedUsers);
+    saveToStorage(`tweet_${userId}`, isFollowing ? false : true);
+  };
+
   return (
     <div className={style.container}>
       {!isLoading && (
@@ -43,7 +63,7 @@ export default function Tweets() {
           <button className={style.buttonGoHome}>Go Home</button>
         </Link>
       )}
-      <TweetsList users={users} />
+      <TweetsList users={users} handleFollowClick={handleFollowClick} />
       {users.length < 12 && !isLoading && (
         <ButtonLoadMore handleLoadMoreClick={handleLoadMoreClick} />
       )}
@@ -52,3 +72,19 @@ export default function Tweets() {
     </div>
   );
 }
+
+// const handleFollowClick = (userId, isFollowing) => {
+//     const updatedUsers = users.map(user => {
+//       if (user.id === userId) {
+//         const updatedUser = {
+//           ...user,
+//           followers: user.followers + (isFollowing ? -1 : 1),
+//         };
+//         updateFollowers(user.id, { followers: updatedUser.followers });
+//         return updatedUser;
+//       }
+//       return user;
+//     });
+//     setUsers(updatedUsers);
+//     saveToStorage(`tweet_${userId}`, isFollowing ? false : true);
+//   };
