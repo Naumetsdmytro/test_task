@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types';
+
 import cardPicture from '../../images/cardPicture.png';
 import logo from '../../images/logo.png';
 import { loadFromStorage } from 'components/services/storage';
@@ -25,7 +27,7 @@ export const TweetsListItem = ({
         <img src={avatar} alt="user name" className={style.cardAvatar} />
         <p className={style.cardTextTweets}>{tweets} tweets</p>
         <p className={style.cardTextFollowers}>
-          {followers.toLocaleString('en-US')} followers
+          {followers.toLocaleString()} followers
         </p>
         <button
           type="button"
@@ -37,4 +39,12 @@ export const TweetsListItem = ({
       </div>
     </li>
   );
+};
+
+TweetsListItem.propTypes = {
+  id: PropTypes.string.isRequired,
+  tweets: PropTypes.number.isRequired,
+  avatar: PropTypes.string.isRequired,
+  followers: PropTypes.number.isRequired,
+  handleFollowClick: PropTypes.func.isRequired,
 };

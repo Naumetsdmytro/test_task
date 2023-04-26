@@ -72,19 +72,3 @@ export default function Tweets() {
     </div>
   );
 }
-
-// const handleFollowClick = (userId, isFollowing) => {
-//     const updatedUsers = users.map(user => {
-//       if (user.id === userId) {
-//         const updatedUser = {
-//           ...user,
-//           followers: user.followers + (isFollowing ? -1 : 1),
-//         };
-//         updateFollowers(user.id, { followers: updatedUser.followers });
-//         return updatedUser;
-//       }
-//       return user;
-//     });
-//     setUsers(updatedUsers);
-//     saveToStorage(`tweet_${userId}`, isFollowing ? false : true);
-//   };
